@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const nftRouter = require('./routes/nftRouter');
 const projectRouter = require('./routes/projectRouter');
 
-const port = process.env.PORT ? process.env.PORT : 4000;
+const port = process.env.PORT ? process.env.PORT : 5005;
 console.log(process.env.MONGOOSE);
 
 mongoose.connect(process.env.MONGOOSE, {
