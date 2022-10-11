@@ -1,18 +1,28 @@
-# Sample Hardhat Project
+# <img src="src/public/stock.png" alt="JRNY" height="128px">
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+# JRNY V1 Backend
 
-Try running some of the following tasks:
+[![Docs](https://img.shields.io/badge/docs-%F0%9F%93%84-blue)](--LINK FOR JRNY WHITEPAPER--)
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+This repository contains the Backend for JRNY's V1 MVP, including the the the off-chain consumer data stored using a MongoDB Database, and the on-chain contracts used to facilitate DAO investment and NFT sales.
+
+For a high-level introduction to JRNY, see [The JRNY Greenpaper](--LINK FOR JRNY WHITEPAPER--).
+
+## Structure
+
+Active development occurs in this repository, which means the some aspects of the backend might not be production-ready at times. Most of the mock data used for the MVP is private and thus can't be cloned by anyone, however all of the Schema is here to allow for mock data creation.
+
+## Clone
+
+This repository uses npm as a package manager, so to clone this repo run:
+
+```
+git clone https://github.com/LawsonGraham/jrny-backend.git
+cd jrny-backend
+npm install
 ```
 
-(backend) npx hardhat test - run test files
-(backend) npx hardhat node - run a local node, initialize the bunch of test accounts
-(backend) npx hardhat run scripts/deploy.js --network localhost - deploys nftMarket contract
-(backend) npm run backend - json-server --watch db.json
+## Run
+
+Run the front end in dev mode:
+`npm run start:dev`

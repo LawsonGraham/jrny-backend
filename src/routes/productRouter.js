@@ -1,5 +1,5 @@
 const express = require('express');
-const Nft = require('../models/Nft');
+const Product = require('../models/Product');
 
 require('dotenv').config();
 
@@ -8,7 +8,6 @@ const router = express.Router();
 // Get specific nft by query
 router.get('/', async function (req, res) {
   const { address, projecturl, owner, price } = req.query;
-
   try {
     let filter = {};
     if (address) {
@@ -29,7 +28,7 @@ router.get('/', async function (req, res) {
         filter.price = { "$gt" :  parseInt(r)}
       }
     }
-    let nfts = await Nft.find(filter);
+    let nfts = await Product.find(filter);
     return res.status(200).json(nfts);
   } catch (err) {
     console.log(err);
@@ -41,7 +40,7 @@ router.get('/', async function (req, res) {
 router.get('/project/:url', async function (req, res) {
   const { url } = req.params;
   try {
-    let nfts = await Nft.find({ projecturl: url });
+    let nfts = await Product.find({ projecturl: url });
     if (!nfts) throw new Error('No record found.');
 
     return res.status(200).json(nfts);
@@ -60,7 +59,7 @@ router.get('/owner/', async function (req, res) {
     filter.owner = owner;
   }
   try {
-    let ownerNFTs = await Nft.find(filter);
+    let ownerNFTs = await Product.find(filter);
     if (!ownerNFTs) throw new Error('No record found.');
 
     return res.status(200).json(ownerNFTs);
@@ -75,7 +74,7 @@ router.get('/owner/', async function (req, res) {
   const { ownerAddress } = req.params;
   console.log(ownerAddress)
   try {
-    let ownerNFTs = await Nft.find({ owner: ownerAddress });
+    let ownerNFTs = await Product.find({ owner: ownerAddress });
     if (!ownerNFTs) throw new Error('No record found.');
 
     return res.status(200).json(ownerNFTs);
@@ -90,7 +89,7 @@ router.get('/:nftAddress', async function (req, res) {
   const { nftAddress } = req.params;
   console.log(nftAddress)
   try {
-    let foundNFT = await Nft.findOne({ address: nftAddress });
+    let foundNFT = await Product.findOne({ address: nftAddress });
     if (!foundNFT) throw new Error('No record found.');
 
     return res.status(200).json(foundNFT);
@@ -129,7 +128,7 @@ router.post('/newNFT', express.raw({ inflate: true, limit: '50mb', type: () => t
   }
 
   try {
-    let new_nft = new Nft({
+    let new_nft = new Product({
       address,
       nftName,
       imageLink,
@@ -162,7 +161,7 @@ router.patch('/patchNFTPrice', async function (req, res) {
   }
 
   try {
-    let updated_NFT = await Nft.updateOne({ address: address }, {
+    let updated_NFT = await Product.updateOne({ address: address }, {
       $set: {
         price: price
       }
