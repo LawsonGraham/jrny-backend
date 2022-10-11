@@ -39,7 +39,6 @@ app.use('/v1/nft/', nftRouter);
 app.use('/v1/project/', projectRouter);
 app.use('/v1/product/', productRouter);
 
-
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
