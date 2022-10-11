@@ -1,4 +1,4 @@
-# <img src="logo.png" alt="JRNY" height="128px">
+# <img src="tetraLogo.png" alt="JRNY" height="128px">
 
 # JRNY V1 Backend
 
